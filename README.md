@@ -1,4 +1,4 @@
-Motivation                                                         {#mainpage}
+Motivation
 ----------
 
 I had some issues with the driver from the vendor. I figured that I need to
