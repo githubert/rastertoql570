@@ -121,7 +121,7 @@ enum ql_print_info_validity {
 
 	/**
 	 * A mysterious flag described as "Always ON" in the specification.  An
-	 * intial suspicion that this might signal the printer to recover from
+	 * initial suspicion that this might signal the printer to recover from
 	 * errors after a short amount of time turned out to be wrong. (This
 	 * was based on the name `PI_RECOVER` as used in the specification.)
 	 */

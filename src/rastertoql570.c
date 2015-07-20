@@ -196,7 +196,7 @@ wait_for_page_end()
  * Turns status information into user visible information.
  *
  * This function returns true to indicate that an end state has been reached.
- * This means either an error occured or the printer changed to PT_WAITING
+ * This means either an error occurred or the printer changed to PT_WAITING
  * (ready state).
  *
  * TODO: Maybe split this into further pieces, just look at that switch beneath
@@ -276,7 +276,7 @@ handle_status(ql_status *status)
 /**
  * Initialise the printer.
  *
- * This will try a few times to initalise the printer. After the first try,
+ * This will try a few times to initialise the printer. After the first try,
  * ql_init() will be called with flush=true. We will sleep for 100ms after each
  * call to ql_init(), because I observed that sometimes data is not ready, but
  * the timeout on cupsBackChannelRead will no come into effect. I guess I am

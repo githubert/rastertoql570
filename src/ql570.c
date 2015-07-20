@@ -166,7 +166,7 @@ ql_page_end(bool last_page, FILE *device)
  * * The diagram is wrong. The description says, this is bit 3, the diagram
  *   says, this is bit 4. This cost me some time.
  *   TODO: Check 720N/NW. The documentation there lacks the diagram and the
- *   description sys it is bit 4. I bet this is wrong!
+ *   description says it is bit 4. I bet this is wrong!
  * * Not cutting is the default. The description says that 'cut at end' is the
  *   default.
  *

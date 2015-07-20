@@ -121,7 +121,7 @@ int main()
 }
 ~~~~~~~~~~~~~
 
-The fully commented example kann be found in `src/examples/minimal.c`.
+The fully commented example can be found in `src/examples/minimal.c`.
 
 If you need some quick and dirty way to print something meaningful on a label,
 use GIMP to create a 720x150 pixel image and export it later as XBM. These are
