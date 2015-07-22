@@ -19,6 +19,8 @@
  */
 
 #include "../ql570.h"
+#include <stdlib.h>
+#include <errno.h>
 
 /**
  * Raster line length for the QL-570 is 90 bytes. There are some other QL
@@ -36,7 +38,14 @@
  */
 int main()
 {
-	FILE *device = fopen("/dev/usb/lp0", "wb");
+	char *devname = "/dev/usb/lp0";
+	FILE *device = fopen(devname, "wb");
+
+	if (device == NULL) {
+		fprintf(stderr, "Error while opening %s: %s\n", devname, strerror(errno));
+		return EXIT_FAILURE;
+	}
+
 	ql_status status = {0};
 	uint8_t buffer[BUFFER_SIZE];
 
