@@ -30,7 +30,6 @@ ql_status_request(FILE *device)
 {
 	uint8_t request[3] = {QL_ESC, 0x69, 0x53};
 	fwrite(request, 3, 1, device);
-	fflush(device);
 }
 
 /**
@@ -64,16 +63,16 @@ ql_status_read(ql_status *status, FILE *device)
 void
 ql_init(bool flush, FILE *device)
 {
+	setvbuf(device, NULL, _IONBF, 0);
+
 	if (flush) {
 		uint8_t init_buffer[200];
 		memset(&init_buffer, 0x0, 200);
 		fwrite(init_buffer, sizeof(uint8_t), 200, device);
-		fflush(device);
 	}
 
 	uint8_t request[2] = {QL_ESC, 0x40};
 	fwrite(request, 2, 1, device);
-	fflush(device);
 }
 
 /**
@@ -92,7 +91,6 @@ ql_raster(uint8_t length, uint8_t *data, FILE *device)
 	uint8_t request[3] = {0x67, 0x00, length};
 	fwrite(request, 3, 1, device);
 	fwrite(data, length, 1, device);
-	fflush(device);
 }
 
 /**
@@ -111,8 +109,6 @@ ql_raster_end(uint8_t length, FILE *device)
 
 	fwrite(request, 3, 1, device);
 	fwrite(data, length, 1, device);
-
-	fflush(device);
 }
 
 /**
@@ -129,7 +125,6 @@ ql_page_start(ql_print_info *print_info, FILE *device)
 	uint8_t request[3] = {QL_ESC, 0x69, 0x7A};
 	fwrite(request, 3, 1, device);
 	fwrite(print_info, sizeof(ql_print_info), 1, device);
-	fflush(device);
 }
 
 /**
@@ -150,7 +145,6 @@ ql_page_end(bool last_page, FILE *device)
 	}
 
 	fwrite(&request, 1, 1, device);
-	fflush(device);
 }
 
 
@@ -200,7 +194,6 @@ ql_set_extended_options(bool cut_at_end, bool high_resolution, FILE *device)
 
 	uint8_t request[4] = {QL_ESC, 0x69, 0x4B, options};
 	fwrite(request, 4, 1, device);
-	fflush(device);
 }
 
 /**
@@ -217,7 +210,6 @@ ql_autocut_enable(FILE *device)
 {
 	uint8_t request[4] = {QL_ESC, 0x69, 0x4D, 0b01000000};
 	fwrite(request, 4, 1, device);
-	fflush(device);
 }
 
 /**
@@ -236,7 +228,6 @@ ql_autocut_interval(uint8_t interval, FILE *device)
 {
 	uint8_t request[4] = {QL_ESC, 0x69, 0x41, interval};
 	fwrite(request, 4, 1, device);
-	fflush(device);
 }
 
 /**
@@ -276,5 +267,4 @@ ql_set_margins(uint16_t margins, FILE *device)
 {
 	uint8_t request[5] = {QL_ESC, 0x69, 0x64, margins & 0x00FF, (margins & 0xFF00) >> 8};
 	fwrite(request, 5, 1, device);
-	fflush(device);
 }
