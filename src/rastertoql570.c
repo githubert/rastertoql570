@@ -319,7 +319,7 @@ init(ql_status *status, FILE* device)
 bool
 backchannel_read_status(ql_status* status)
 {
-	ssize_t ret = cupsBackChannelRead((uint8_t*)status, sizeof(ql_status), 10.0);
+	ssize_t ret = cupsBackChannelRead((char*)status, sizeof(ql_status), 10.0);
 
 	if (ret != sizeof(ql_status))
 		return false;
