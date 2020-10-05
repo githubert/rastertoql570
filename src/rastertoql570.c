@@ -33,7 +33,7 @@
 #include "rastertoql570.h"
 
 int
-main(int argc, char** argv)
+main(__attribute__((unused)) int argc, __attribute__((unused)) char** argv)
 {
 	// As per recommendation in the CUPS documentation 
 	// TODO: use sigaction()
