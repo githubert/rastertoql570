@@ -27,6 +27,6 @@ bool request_status(ql_status*, FILE*);
 void wait_for_page_end();
 bool handle_status(ql_status*);
 void print_blank_lines(uint32_t count, size_t buffer_size, FILE *device);
-void handle_page(cups_raster_t*, cups_page_header2_t, ql_status, unsigned int, FILE*);
+void handle_page(cups_raster_t*, cups_page_header2_t, unsigned int, FILE*);
 
 #endif

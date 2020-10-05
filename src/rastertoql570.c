@@ -64,7 +64,7 @@ main(__attribute__((unused)) int argc, __attribute__((unused)) char** argv)
 	unsigned int page_counter = 0;
 
 	while (cupsRasterReadHeader2(raster, &header)) {
-		handle_page(raster, header, status, page_counter, fout);
+		handle_page(raster, header, page_counter, fout);
 		page_counter++;
 
 		// Printing this information will also end up on the jobs page
@@ -88,7 +88,7 @@ main(__attribute__((unused)) int argc, __attribute__((unused)) char** argv)
  *
  */
 void
-handle_page(cups_raster_t *raster, cups_page_header2_t header, ql_status status, unsigned int page_counter, FILE *fout)
+handle_page(cups_raster_t *raster, cups_page_header2_t header, unsigned int page_counter, FILE *fout)
 {
 	/* // TODO: Support some safety option for testing.
 	if( header.cupsHeight > 900 )
